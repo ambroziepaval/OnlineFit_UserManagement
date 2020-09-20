@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+
+  onlinefit_mongo_db:
+    image: mongo:4.4
+    container_name: 'onlinefit_mongo_db'
+    environment:
+      - MONGO_INITDB_DATABASE='onlinefit_user_management'
+    ports:
+      - 27017:27017
+    volumes:
+      - onlinefit_mongodata:/data/db
+
+  onlinefit-user-management:
+    image: onlinefit-user-management
+    container_name: 'onlinefit-user-management'
+    ports:
+      - 8080:8080
+    links:
+      - onlinefit_mongo_db
+
+volumes:
+  onlinefit_mongodata:
