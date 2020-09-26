@@ -19,17 +19,21 @@ public class User {
     @Field("last_name")
     private String lastName;
 
+    private String username;
+
     private String email;
 
+    @Field("job_title")
     private String jobTitle;
 
     private String race;
 
     private String gender;
 
-    public User(String firstName, String lastName, String email, String jobTitle, String race, String gender) {
+    public User(String firstName, String lastName, String username, String email, String jobTitle, String race, String gender) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.username = username;
         this.email = email;
         this.jobTitle = jobTitle;
         this.race = race;

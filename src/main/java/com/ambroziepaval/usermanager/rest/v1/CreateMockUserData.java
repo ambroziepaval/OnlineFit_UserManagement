@@ -59,7 +59,7 @@ public class CreateMockUserData {
         while (Objects.nonNull(line)) {
 
             String[] userElements = line.split(",");
-            userList.add(new User(userElements[0], userElements[1], userElements[2], userElements[3], userElements[4], userElements[5]));
+            userList.add(new User(userElements[0], userElements[1], userElements[2], userElements[3], userElements[4], userElements[5], userElements[6]));
 
             line = bufferedReader.readLine();
         }
