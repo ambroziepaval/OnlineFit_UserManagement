@@ -1,9 +1,9 @@
 package com.ambroziepaval.usermanager.service;
 
+import java.util.List;
+
 import com.ambroziepaval.usermanager.exception.UserNotFoundException;
 import com.ambroziepaval.usermanager.model.User;
-
-import java.util.List;
 
 public interface UserService {
 

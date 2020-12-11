@@ -1,5 +1,12 @@
 package com.ambroziepaval.usermanager.rest.v1;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 import com.ambroziepaval.usermanager.model.User;
 import com.ambroziepaval.usermanager.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -10,13 +17,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 @RestController
 @RequiredArgsConstructor
@@ -35,7 +35,7 @@ public class CreateMockUserData {
 
         try {
             List<User> users = getUsersFromFile();
-            userRepository.insert(users);
+            userRepository.saveAll(users);
 
         } catch (IOException e) {
             log.error("Error saving the mock user data.", e);

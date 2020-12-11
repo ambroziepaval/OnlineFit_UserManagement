@@ -2,6 +2,16 @@ version: '3'
 
 services:
 
+  onlinefit_postgres_db:
+    image: postgres:13.1
+    container_name: 'onlinefit_postgres_db'
+    environment:
+      - POSTGRES_DB=onlinefit_user_management
+      - POSTGRES_USER=onlinefit_user
+      - POSTGRES_PASSWORD=onlinefit_password
+    volumes:
+      - onlinefit_postgresdata:/var/lib/postgresql/data
+
   onlinefit_mongo_db:
     image: mongo:4.4
     container_name: 'onlinefit_mongo_db'
@@ -17,8 +27,13 @@ services:
     container_name: 'onlinefit-user-management'
     ports:
       - 8080:8080
-    links:
-      - onlinefit_mongo_db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://onlinefit_postgres_db:5432/onlinefit_user_management
+      - SPRING_DATASOURCE_USERNAME=onlinefit_user
+      - SPRING_DATASOURCE_PASSWORD=onlinefit_password
+    depends_on:
+      - onlinefit_postgres_db
 
 volumes:
   onlinefit_mongodata:
+  onlinefit_postgresdata:

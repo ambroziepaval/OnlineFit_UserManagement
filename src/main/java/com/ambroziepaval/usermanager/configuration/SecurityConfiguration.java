@@ -18,7 +18,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.csrf().disable()
+                .authorizeRequests()
                 .anyRequest()
                 .authenticated()
                 .and().httpBasic()
@@ -31,6 +32,5 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .withUser("onlinefit_um_admin").password(passwordEncoder().encode("onlinefit_um_admin"))
                 .authorities("USERMANAGEMENT_ADMIN");
     }
-
 
 }

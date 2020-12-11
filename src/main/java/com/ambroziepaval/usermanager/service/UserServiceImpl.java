@@ -1,14 +1,14 @@
 package com.ambroziepaval.usermanager.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import com.ambroziepaval.usermanager.exception.UserNotFoundException;
 import com.ambroziepaval.usermanager.model.User;
 import com.ambroziepaval.usermanager.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Service
